@@ -11,12 +11,16 @@
         $datos = array_merge($global_context, $datos);
         //union de variables de sessión
         $datos = array_merge($_SESSION, $datos);
-
+        if(isset($datos["layoutFile"])){
+          $layoutFile = $datos["layoutFile"];
+        }
+        if(strpos($layoutFile,".view.tpl")===false){
+          $layoutFile .= ".view.tpl";
+        }
 
         $viewsPath = "views/";
         $fileTemplate = $vista.".view.tpl";
         $htmlContent = "";
-        //die($layoutFile);
         if(file_exists($viewsPath.$layoutFile)){
             $htmlContent = file_get_contents($viewsPath.$layoutFile);
             if(file_exists($viewsPath.$fileTemplate)){
@@ -33,7 +37,6 @@
                     $htmlContent = str_replace("\t","",$htmlContent);
                     $htmlContent = str_replace("  ","",$htmlContent);
                 }
-
                 //obtiene un arreglo separando lo distintos tipos de nodos
                 $template_code = parseTemplate($htmlContent);
                 $htmlResult = renderTemplate($template_code, $datos);
@@ -93,12 +96,10 @@
                     continue;
                 }
             }
-
             if($foreachIsOpen || $ifIsOpen || $ifNotIsOpen){
                 $innerBlock[] = $node;
                 continue;
             }
-
             //buscando si es una apertura de foreach
             if(strpos($node,"{{foreach") !== false){
                 if(!$foreachIsOpen){
@@ -118,7 +119,6 @@
                     continue;
                 }
             }
-
             if(strpos($node,"{{if")  !== false){
                 if(!$ifIsOpen){
                     $ifIsOpen = true;
@@ -129,35 +129,32 @@
                     continue;
                 }
             }
-
             //remplazando las variables del nodo
             $nodeReplace = preg_split("/(\{\{\w*\}\})/",$node,-1,PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
             foreach($nodeReplace as $item){
                 if(strpos($item,"{{")  !== false){
                     $index = trim(str_replace("}}","",str_replace("{{","",$item)));
-                    $item = isset($context[$index])?$context[$index]:"";
+                    if($index === "this" && !(is_array($context))){
+                      $item = $context;
+                    }else{
+                      $item = isset($context[$index])?$context[$index]:"";
+                    }
                 }
                 $renderedHTML .= $item;
             }
         }
         return $renderedHTML;
     }
-
     function parseTemplate($htmlTemplate){
-
         $regexp_array = array( 'foreach'   => '(\{\{foreach \w*\}\})',
                                'endfor'    => '(\{\{endfor \w*\}\})',
                                'if'        => '(\{\{if \w*\}\})',
                                'if_not'    =>'(\{\{ifnot \w*\}\})',
                                'if_close'  => '(\{\{endif \w*\}\})',
                                'ifnot_close'  => '(\{\{endifnot \w*\}\})');
-
         $tag_regexp = "/" . join( "|", $regexp_array ) . "/";
-
         //split the code with the tags regexp
         $template_code = preg_split ( $tag_regexp, $htmlTemplate, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
-
         return $template_code;
     }
-
 ?>
