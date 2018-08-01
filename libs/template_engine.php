@@ -96,12 +96,10 @@
                     continue;
                 }
             }
-
             if($foreachIsOpen || $ifIsOpen || $ifNotIsOpen){
                 $innerBlock[] = $node;
                 continue;
             }
-
             //buscando si es una apertura de foreach
             if(strpos($node,"{{foreach") !== false){
                 if(!$foreachIsOpen){
@@ -121,7 +119,6 @@
                     continue;
                 }
             }
-
             if(strpos($node,"{{if")  !== false){
                 if(!$ifIsOpen){
                     $ifIsOpen = true;
@@ -132,7 +129,6 @@
                     continue;
                 }
             }
-
             //remplazando las variables del nodo
             $nodeReplace = preg_split("/(\{\{\w*\}\})/",$node,-1,PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
             foreach($nodeReplace as $item){
@@ -149,22 +145,16 @@
         }
         return $renderedHTML;
     }
-
     function parseTemplate($htmlTemplate){
-
         $regexp_array = array( 'foreach'   => '(\{\{foreach \w*\}\})',
                                'endfor'    => '(\{\{endfor \w*\}\})',
                                'if'        => '(\{\{if \w*\}\})',
                                'if_not'    =>'(\{\{ifnot \w*\}\})',
                                'if_close'  => '(\{\{endif \w*\}\})',
                                'ifnot_close'  => '(\{\{endifnot \w*\}\})');
-
         $tag_regexp = "/" . join( "|", $regexp_array ) . "/";
-
         //split the code with the tags regexp
         $template_code = preg_split ( $tag_regexp, $htmlTemplate, -1, PREG_SPLIT_DELIM_CAPTURE | PREG_SPLIT_NO_EMPTY );
-
         return $template_code;
     }
-
 ?>

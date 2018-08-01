@@ -14,7 +14,6 @@
       echo "<script>alert('$message'); window.location='$url';</script>";
       die();
     }
-
     function redirectWithHtmlMessage($message, $url="index.php"){
     $messageArray = array(
         "message" => $message,
@@ -23,12 +22,10 @@
      renderizar("htmlmessage",$messageArray);
      die();
     }
-
     function redirectToUrl($url){
       header("Location: $url");
       die();
     }
-
     function mergeArrayTo(&$origin, &$destiny){
       if(is_array($origin) && is_array($destiny)){
         foreach($origin as $okey => $ovalue){
@@ -38,7 +35,6 @@
         }
       }
     }
-
     function mergeFullArrayTo(&$origin, &$destiny){
       if(is_array($origin) && is_array($destiny)){
         foreach($origin as $okey => $ovalue){
@@ -46,7 +42,6 @@
         }
       }
     }
-
     function addCssRef($uri){
         global $global_context;
         if(isset($global_context["css_ref"])){
@@ -63,14 +58,12 @@
             $global_context["js_ref"] = array(array("uri"=>$uri));
         }
     }
-
     function addSelectedCmbArray($arreglo,$atributo,$valor,$selAtributo="selected"){
         for($i = 0 ; $i < count($arreglo); $i++){
           $arreglo[$i][$selAtributo] = ($arreglo[$i][$atributo]==$valor)?"selected":"";
         }
         return $arreglo;
     }
-
     function sendFile($source,$filename){
       $fp = @fopen($source, 'rb');
       header('Content-Type: "application/octet-stream"');
