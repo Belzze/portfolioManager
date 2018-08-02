@@ -3,7 +3,7 @@
 
     require_once("libs/utilities.php");
 
-    $pageRequest = "home";
+    $pageRequest = "login";
 
     if(isset($_GET["page"])){
         $pageRequest = $_GET["page"];
