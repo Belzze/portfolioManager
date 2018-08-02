@@ -1,41 +1,221 @@
-<H2>Admin Dashboard</H2>
-<hr />
-<div class="row">
-{{foreach misPortafolios}}
-  <div class="col-sm-3 depth-2 portfolio est{{portafolioestado}}">
-    <div class="row">
-        <div class="col-sm-3">
-          <h3 class="center"><a href class="btnww" data-prtfcod="{{portafoliocodigo}}"><span class="icon ion-ios-briefcase"></span></a></h3>
-          <div class="center"><span class="icon ion-ios-people"></span>&nbsp;{{portafolio_colaboradores}}</div>
-          <div class="center"><span class="icon ion-document-text"></span>&nbsp;{{portafolio_documentos}}</div>
-        </div>
-        <div class="col-sm-8">
-            <h3 class="title">{{portafolionombre}}</h3>
-            <div><span class="icon ion-cube"></span>&nbsp;{{departmanetodesc}}</div>
-        </div>
-    </div>
-  </div>
-{{endfor misPortafolios}}
+<H2>PDVs - Recarga veloz</H2>
+
+<div style="width:100%; ">
+  <input style="margin:2em;display: inline;width:300px;" class="form-control" type="text" name="" value="Buscar PDV">
+  <button class="btn btn-primary" type="button" name="button">Excel</button>
 </div>
-<script>
-  $().ready(
-      function(){
-          $(".btnww").click(
-              function(e){
-                e.preventDefault();
-                e.stopPropagation();
-                var x = document.createElement("FORM");
-                x.action = "index.php?page=portafolioww";
-                x.style="display:none";
-                x.method="POST";
-                var y = document.createElement("INPUT");
-                y.name="prtfcod";
-                y.value=$(this).data('prtfcod');
-                x.appendChild(y);
-                document.body.append(x);
-                x.submit();
-              }
-          );
-      }
-    );
-</script>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">CODIGO DMS</th>
+      <th scope="col">NOMBRE</th>
+      <th scope="col">SUCURSAL</th>
+      <th scope="col">CIRCUITO</th>
+      <th scope="col">BARRIO</th>
+      <th scope="col">VENDEDOR</th>
+      <th scope="col">SIM</th>
+      <th scope="col">EPIN</th>
+      <th scope="col">TARJETA</th>
+      <th scope="col">VENTA REC PY</th>
+      <th scope="col">VENTA REC MES ANT</th>
+      <th scope="col">% PROY</th>
+      <th scope="col">TOTAL AC</th>
+      <th scope="col">PROY</th>
+      <th scope="col">ACT C.A</th>
+      <th scope="col">% C.A</th>
+      <th scope="col">VENTAS VAS</th>
+      <th scope="col">VENTAS VAS MES</th>
+      <th scope="col">%PY</th>
+      <th scope="col">TMY CASH-IN</th>
+      <th scope="col">PROY</th>
+      <th scope="col">MTY CASH-IN MES ANT</th>
+      <th scope="col">% PY</th>
+      <th scope="col">TMY PAGOS</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th scope="row">1</th>
+      <td>Abarroteria brisas del campo</td>
+      <td>Comayagua</td>
+      <td>HA2BU2</td>
+      <td>Barrio esquipulas</td>
+      <td>A_neyvi martinez la villa</td>
+      <td>no</td>
+      <td>no</td>
+      <td>no</td>
+      <td>0.00</td>
+      <td></td>
+      <td>0.00</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Abarroteria brisas del campo</td>
+      <td>Comayagua</td>
+      <td>HA2BU2</td>
+      <td>Barrio esquipulas</td>
+      <td>A_neyvi martinez la villa</td>
+      <td>no</td>
+      <td>no</td>
+      <td>no</td>
+      <td>0.00</td>
+      <td></td>
+      <td>0.00</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Abarroteria brisas del campo</td>
+      <td>Comayagua</td>
+      <td>HA2BU2</td>
+      <td>Barrio esquipulas</td>
+      <td>A_neyvi martinez la villa</td>
+      <td>no</td>
+      <td>no</td>
+      <td>no</td>
+      <td>0.00</td>
+      <td></td>
+      <td>0.00</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Abarroteria brisas del campo</td>
+      <td>Comayagua</td>
+      <td>HA2BU2</td>
+      <td>Barrio esquipulas</td>
+      <td>A_neyvi martinez la villa</td>
+      <td>no</td>
+      <td>no</td>
+      <td>no</td>
+      <td>0.00</td>
+      <td></td>
+      <td>0.00</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Abarroteria brisas del campo</td>
+      <td>Comayagua</td>
+      <td>HA2BU2</td>
+      <td>Barrio esquipulas</td>
+      <td>A_neyvi martinez la villa</td>
+      <td>no</td>
+      <td>no</td>
+      <td>no</td>
+      <td>0.00</td>
+      <td></td>
+      <td>0.00</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Abarroteria brisas del campo</td>
+      <td>Comayagua</td>
+      <td>HA2BU2</td>
+      <td>Barrio esquipulas</td>
+      <td>A_neyvi martinez la villa</td>
+      <td>no</td>
+      <td>no</td>
+      <td>no</td>
+      <td>0.00</td>
+      <td></td>
+      <td>0.00</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <th scope="row">1</th>
+      <td>Abarroteria brisas del campo</td>
+      <td>Comayagua</td>
+      <td>HA2BU2</td>
+      <td>Barrio esquipulas</td>
+      <td>A_neyvi martinez la villa</td>
+      <td>no</td>
+      <td>no</td>
+      <td>no</td>
+      <td>0.00</td>
+      <td></td>
+      <td>0.00</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td>0</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
